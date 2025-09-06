@@ -14,7 +14,7 @@ const About = () => {
             <p>Hello! I'm Alwan, a professional web developer with over 5 years of experience creating modern, responsive websites and applications. I specialize in front-end development with React, but I'm also proficient in back-end technologies.</p>
             <p>My approach combines technical expertise with an eye for design, ensuring that every project I work on is not only functional but also visually appealing and user-friendly.</p>
             <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities.</p>
-            <a href="#" className="btn">Download CV</a>
+            <a href="/Alwan_Farras_CV.pdf"download="Alwan_Farras_CV.pdf" className="btn">Download CV</a>
           </div>
         </div>
       </div>

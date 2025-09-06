@@ -15,13 +15,13 @@ const Skills = () => {
     {
       id: 3,
       title: "Machine Learning",
-      icon: "🎨",
+      icon: "🧠",
       description: "Making machine learning models such as classification, regression, clustering, and more."
     },
     {
       id: 4,
       title: "Natural Language Processing",
-      icon: "📱",
+      icon: "💬",
       description: "Making natural language processing models and chatbots with python."
     }
   ];

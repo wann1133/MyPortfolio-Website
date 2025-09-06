@@ -1,25 +1,30 @@
+import { motion } from 'framer-motion';
+
 const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Website",
-      description: "A full-featured online shopping platform with payment integration and inventory management.",
-      tags: ["React", "Node.js", "MongoDB"],
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      title: "Steak Website",
+      description: "a website that displays a menu for a steak restaurant .",
+      tags: ["Javascript", "HTML", "Tailwind CSS"],
+      image: "src/assets/steak.png",
+      githubUrl: "https://github.com/wann1133/Steak20Wan"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A productivity application for teams to manage projects and collaborate in real-time.",
-      tags: ["React", "Firebase", "Material UI"],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      title: "AI Chatbot",
+      description: "a chatbot website to answer questions about school children with OpenAI API.",
+      tags: ["Javascript", "HTML", "Tailwind CSS"],
+      image: "src/assets/chatbot.png",
+      githubUrl: "https://github.com/wann1133/chatbot-sederhana"
     },
     {
       id: 3,
-      title: "Travel Blog",
-      description: "A responsive blog platform for travelers to share their experiences and photos.",
-      tags: ["Vue.js", "Express", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1234&q=80"
+      title: "CodingBoy",
+      description: "a platform for buying and selling websites and hosting services.",
+      tags: ["Next.js", "Tailwind CSS", "PostgreSQL"],
+      image: "src/assets/CodingBoy.png",
+      githubUrl: "https://github.com/wann1133/codingboy-platform"
     }
   ];
 
@@ -27,11 +32,28 @@ const Projects = () => {
     <section id="projects" className="section">
       <div className="container">
         <div className="section-title">
-          <h2 className="fade-in-up">My Projects</h2>
+          <motion.h2 
+            className="fade-in-up"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            My Projects
+          </motion.h2>
         </div>
         <div className="projects-container">
           {projects.map((project, index) => (
-            <div className="project-card fade-in-up" key={project.id} style={{animationDelay: `${index * 0.1}s`}}>
+            <motion.div 
+              className="project-card fade-in-up" 
+              key={project.id} 
+              style={{animationDelay: `${index * 0.1}s`}}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+            >
               <div className="project-img">
                 <img src={project.image} alt={project.title} />
               </div>
@@ -43,9 +65,18 @@ const Projects = () => {
                     <span className="tag" key={tag}>{tag}</span>
                   ))}
                 </div>
-                <a href="#" className="btn btn-outline">View Project</a>
+                <motion.a 
+                  href={project.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-outline"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View Project
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

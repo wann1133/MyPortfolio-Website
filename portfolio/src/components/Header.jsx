@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import logoImage from '../assets/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,27 +32,61 @@ const Header = () => {
     setIsMenuOpen(false);
   }, [location]);
 
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Skills', path: '/skills' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Licenses', path: '/licenses' },
+    { name: 'Contact', path: '/contact' }
+  ];
+
   return (
-    <header className={isScrolled ? 'scrolled' : ''}>
+    <motion.header 
+      className={isScrolled ? 'scrolled' : ''}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container navbar">
-        <Link to="/" className="logo">MyPort<span>folio</span></Link>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+        >
+        <Link to="/" className="logo">
+          <img src={logoImage} alt="MyPortfolio Logo" className="logo-image" />
+        </Link>
+        </motion.div>
         
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-          <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About</Link></li>
-          <li><Link to="/skills" className={location.pathname === '/skills' ? 'active' : ''}>Skills</Link></li>
-          <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projects</Link></li>
-          <li><Link to="/licenses" className={location.pathname === '/licenses' ? 'active' : ''}>Licenses</Link></li>
-          <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
+          {navItems.map((item, index) => (
+            <motion.li
+              key={item.path}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              whileHover={{ y: -2 }}
+            >
+              <Link 
+                to={item.path} 
+                className={location.pathname === item.path ? 'active' : ''}
+              >
+                {item.name}
+              </Link>
+            </motion.li>
+          ))}
         </ul>
         
-        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+        <motion.div 
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
+          onClick={toggleMenu}
+          whileTap={{ scale: 0.9 }}
+        >
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
-        </div>
+        </motion.div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
