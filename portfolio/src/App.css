@@ -197,16 +197,16 @@ header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  padding: 20px 0;
+  padding: 0px;
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  height: 80px;
+  height: 95px;
 }
 
 header.scrolled {
-  padding: 15px 0;
+  padding: 0px;
   background: rgba(10, 10, 10, 0.95);
-  height: 70px;
+  height: 85px;
 }
 
 .navbar {
@@ -226,8 +226,13 @@ header.scrolled {
 }
 
 .logo-image {
-  height: 45px; /* Sesuaikan tinggi logo jika perlu */
+  height: 120px; /* Ukuran logo diperbesar */
   width: auto;
+  transition: height 0.3s ease;
+}
+
+header.scrolled .logo-image {
+  height: 100px; /* Logo sedikit mengecil saat di-scroll */
 }
 .nav-links {
   display: flex;
@@ -972,15 +977,16 @@ footer::before {
   
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 85px; /* Disesuaikan dengan tinggi header baru */
     left: -100%;
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 85px); /* Disesuaikan dengan tinggi header baru */
     background: rgba(10, 10, 10, 0.95);
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
     transition: all 0.3s ease;
+    z-index: 999; /* Memastikan menu di atas konten lain */
   }
   
   .nav-links.active {
@@ -988,8 +994,11 @@ footer::before {
   }
   
   header {
-    padding: 15px 0;
-    height: 70px;
+    height: 85px; /* Menyesuaikan tinggi header untuk mobile */
+  }
+
+  header.scrolled {
+    height: 75px; /* Menyesuaikan tinggi header saat di-scroll di mobile */
   }
   
   #hero {
